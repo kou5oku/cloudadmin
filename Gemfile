@@ -12,6 +12,7 @@ group :development, :test do
   gem  'rspec'
   gem  'test-unit'
   gem  'win32console'
+  gem  'spork'
 end
 
 # Gems used only for assets and not required

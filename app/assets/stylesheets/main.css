@@ -1,0 +1,78 @@
+
+* { padding: 0; margin: 0; }
+
+body {
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 13px;
+}
+#wrapper { 
+ margin: 0px 0px 0px 0px;
+ width: 922px;
+ margin-left:5%;
+}
+#faux {
+ background: url(faux-11-4.gif);
+ margin-bottom: 10px;
+ overflow: auto; /* Paul O Brien Fix for IE www.pmob.co.uk */
+ width: 100%
+}
+#header {
+ color: #333;
+ width: 902px;
+ padding: 0px 0px 0px 0px;
+ height: 200px;
+ margin: 0px 0px 5px 0px;
+ background: #D1DBDB;
+}
+#navigation {
+ color: #333;
+ padding: 10px;
+ margin: 0px 0px 5px 0px;
+ background: #ABBEBE;
+}
+#leftcolumn { 
+ display: inline;
+ color: #333;
+ margin: 10px;
+ padding: 0px;
+ width: 205px;
+ float: left;
+}
+#leftmiddle { 
+ float: left;
+ color: #333;
+ margin: 10px 13px;
+ padding: 0px;
+ width: 209px;
+ display: inline;
+ position: relative;
+}
+#rightmiddle { 
+ display: inline;
+ position: relative;
+ color: #333;
+ margin: 10px 10px 10px 10px;
+ padding: 0px;
+ width: 205px;
+ float: left;
+}
+#rightcolumn { 
+ display: inline;
+ position: relative;
+ color: #333;
+ margin: 10px 10px 10px 17px;
+ padding: 0px;
+ width: 205px;
+ float: left;
+}
+#emailinbox{
+	position: relative;
+	float: none;
+	margin: 0px 0px 0px 0px;
+	background: #ABBEBE;
+	padding:10px;
+}
+
+
+
+.clear { clear: both; background: none; }
