@@ -8,7 +8,6 @@ group :development, :test do
   gem  'autotest'
   gem  'autotest-growl'
   gem  'autotest-rails'
-
   gem  'rspec'
   gem  'test-unit'
   gem  'win32console'
