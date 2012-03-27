@@ -1,5 +1,33 @@
+<script type="text/javascript" chartset="utf-8">
+  $(function(){
+  	new Highcharts.Chart({
+  		chart: {
+  			renderTo: "orders_chart"
+  		},
+  		title: {
+  			text: "Server Status"
+  		},
+  		xAxis: {
+  			type: "datetime"
+  		},
+  		yAxis: {
+  			title: {
+  				text: "dollars"
+  			}
+  		},
+  		series: [{
+  			data: [1,2,7,3,8,2]
+  			}]
+  	});
+
+  });
+</script>
 <div class="center hero-unit">
 <%= link_to image_tag("logo.png", alt: "Cloudadmin"), 'http://rubyonrails.org/' %>
+<hr>
+<% if signed_in? %>
+<div id="orders_chart" style="width:560px; height:300px; margin-left:125px;"></div>
+<% else %>
   <h1>Cloud Admin</h1>
 
   <h2>
@@ -7,5 +35,7 @@
   </h2>
 
   <%= link_to "Sign up now!", signup_path , class: "btn btn-large btn-primary" %>
+
+  <% end %>
 </div>
 
