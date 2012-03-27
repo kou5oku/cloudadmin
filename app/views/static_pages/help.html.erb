@@ -3,3 +3,77 @@
 <p>
  <h1>help</h1>
 </p>
+<div class="center hero-unit">
+
+<style>
+  #draggable { width: 150px; height: 80px; padding: 0.5em; background:grey;}
+  </style>
+  <script>
+  $(function() {
+    $( "#draggable" ).draggable({containment: "#containment-wrapper", scroll: false});
+  });
+  </script>
+
+
+
+<div class="demo">
+
+<div id="draggable" class="ui-widget-content">
+  <p>Server 1</p>
+</div>
+
+
+
+</div><!-- End demo -->
+
+
+
+<div class="demo-description" style="display: none; ">
+<p>Enable draggable functionality on any DOM element. Move the draggable object by clicking on it with the mouse and dragging it anywhere within the viewport.</p>
+</div><!-- End demo-description -->
+
+
+
+
+	
+	<script>
+	// increase the default animation speed to exaggerate the effect
+	$.fx.speeds._default = 1000;
+	$(function() {
+		$( "#dialog" ).dialog({
+			autoOpen: false,
+			show: "blind",
+			hide: "explode"
+		});
+
+		$( "#opener" ).click(function() {
+			$( "#dialog" ).dialog( "open" );
+			return false;
+		});
+	});
+	</script>
+
+
+
+<div class="demo">
+
+<div id="dialog" title="Basic dialog">
+	<p>This is an animated dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>
+
+<button id="opener">Open Dialog</button>
+
+</div><!-- End demo -->
+
+
+
+<div class="demo-description">
+<p>Dialogs may be animated by specifying an effect for the show and/or hide properties.  You must include the individual effects file for any effects you would like to use.</p>
+</div><!-- End demo-description -->
+
+
+
+</div>
+
+
+
