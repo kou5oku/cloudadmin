@@ -3,12 +3,35 @@
 <p>
  <h1>help</h1>
 </p>
+
+
+  <script type="text/javascript">
+    $(function() {
+        /** This code runs when everything has been loaded on the page */
+        /* Inline sparklines take their values from the contents of the tag */
+        $('.inlinesparkline').sparkline(); 
+
+        /* Sparklines can also take their values from the first argument 
+        passed to the sparkline() function */
+        var myvalues = [10,8,5,7,4,4,1];
+        $('.dynamicsparkline').sparkline(myvalues);
+
+        /* The second argument gives options such as chart type */
+        $('.dynamicbar').sparkline(myvalues, {type: 'bar', barColor: 'green'} );
+
+        /* Use 'html' instead of an array of values to pass options 
+        to a sparkline with data in the tag */
+        $('.inlinebar').sparkline('html', {type: 'bar', barColor: 'red'} );
+    });
+    </script>
+
+
 <div class="center hero-unit">
 
 	
 	
 	<style>
-	.draggable { width: 90px; height: 40px; padding: 0.5em; float: left; margin: 0 0px 2px 0; }
+	.draggable { width: 120px; height: 20px; padding: 0.5em; float: left; margin: 0 0px 2px 0; }
 	#draggable, #draggable2, #draggable1, #draggable3 { margin-bottom:5px; cursor: move; }
 	#containment-wrapper { width: 95%; height:150px; border:2px solid #ccc; padding: 10px; }
 	#containment-wrapper2 { width: 95%; height:250px; border:2px solid #ccc; padding: 10px; }
@@ -31,16 +54,25 @@
 
 <div id="containment-wrapper" class="ui-widget-header">
 <div id="draggable" class="draggable ui-widget-content">
-	<p>Server 1</p>
+	<p>
+ Server01<span class="inlinesparkline">1,4,4,7,5,9,10</span>
+</p>
 </div>
 <div id="draggable1" class="draggable ui-widget-content">
-	<p>Server 2</p>
+	<p>
+ Server02<span class="dynamicsparkline">Loading..</span>
+</p>
 </div>
 <div id="draggable2" class="draggable ui-widget-content">
-	<p>Server 3</p>
+	<p>
+ Server03<span class="dynamicbar">dynamic bar</span>
+</p>
 </div>
 <div id="draggable3" class="draggable ui-widget-content">
-	<p>Server 4</p>
+	<p>
+Server04<span class="inlinebar">1,3,4,5,3,5</span>
+</p>
+
 </div>
 
 </div>
