@@ -5,33 +5,127 @@
 </p>
 <div class="center hero-unit">
 
-<style>
-  #draggable { width: 150px; height: 80px; padding: 0.5em; background:grey;}
-  </style>
-  <script>
-  $(function() {
-    $( "#draggable" ).draggable({containment: "#containment-wrapper", scroll: false});
-  });
-  </script>
+	
+	
+	<style>
+	.draggable { width: 90px; height: 40px; padding: 0.5em; float: left; margin: 0 0px 2px 0; }
+	#draggable, #draggable2, #draggable1, #draggable3 { margin-bottom:5px; cursor: move; }
+	#containment-wrapper { width: 95%; height:150px; border:2px solid #ccc; padding: 10px; }
+	#containment-wrapper2 { width: 95%; height:250px; border:2px solid #ccc; padding: 10px; }
+	</style>
+	<script>
+	$(function() {
+	    $( "#draggable" ).draggable({  containment: "#containment-wrapper", scroll: false, snap: true });
+	    $( "#draggable1" ).draggable({  containment: "#containment-wrapper", scroll: false, snap: true });
+        $( "#draggable2" ).draggable({  containment: "#containment-wrapper", scroll: false, snap: true });
+		$( "#draggable3" ).draggable({ containment: "#containment-wrapper", scroll: false, snap: true });
+		
+	});
+	</script>
 
 
 
 <div class="demo">
 
-<div id="draggable" class="ui-widget-content">
-  <p>Server 1</p>
+
+
+<div id="containment-wrapper" class="ui-widget-header">
+<div id="draggable" class="draggable ui-widget-content">
+	<p>Server 1</p>
+</div>
+<div id="draggable1" class="draggable ui-widget-content">
+	<p>Server 2</p>
+</div>
+<div id="draggable2" class="draggable ui-widget-content">
+	<p>Server 3</p>
+</div>
+<div id="draggable3" class="draggable ui-widget-content">
+	<p>Server 4</p>
 </div>
 
-
+</div>
 
 </div><!-- End demo -->
 
 
+	
+	<style>
+	#products { float:left; margin-right: 2em; }
+	#cart { width: 200px; float: left; }
+	/* style the list to maximize the droppable hitarea */
+	#cart ol { margin: 0; padding: 1em 0 1em 3em; }
+	</style>
+	<script>
+	$(function() {
+		$( "#catalog" ).accordion();
+		$( "#catalog li" ).draggable({
+			appendTo: "body",
+			helper: "clone"
+		});
+		$( "#cart ol" ).droppable({
+			activeClass: "ui-state-default",
+			hoverClass: "ui-state-hover",
+			accept: ":not(.ui-sortable-helper)",
+			drop: function( event, ui ) {
+				$( this ).find( ".placeholder" ).remove();
+				$( "<li></li>" ).text( ui.draggable.text() ).appendTo( this );
+			}
+		}).sortable({
+			items: "li:not(.placeholder)",
+			sort: function() {
+				// gets added unintentionally by droppable interacting with sortable
+				// using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
+				$( this ).removeClass( "ui-state-default" );
+			}
+		});
+	});
+	</script>
 
-<div class="demo-description" style="display: none; ">
-<p>Enable draggable functionality on any DOM element. Move the draggable object by clicking on it with the mouse and dragging it anywhere within the viewport.</p>
-</div><!-- End demo-description -->
 
+
+<div id="containment-wrapper2" >
+	
+<div id="products">
+	<h3 class="ui-widget-header">Servers</h3>	
+	<div id="catalog">
+		<h3><a href="#">Vmware</a></h3>
+		<div>
+			<ul>
+				<li>vmdc01</li>
+				<li>vmdc02</li>
+				<li>vmexchange</li>
+			</ul>
+		</div>
+		<h3><a href="#">Hyper-V</a></h3>
+		<div>
+			<ul>
+				<li>hvsql01</li>
+				<li>hvsql02</li>
+				<li>hvsp01</li>
+			</ul>
+		</div>
+		<h3><a href="#">Blades</a></h3>
+		<div>
+			<ul>
+				<li>esx01</li>
+				<li>esx02</li>
+				<li>esx03</li>
+				<li>hv01</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="cart">
+	<h3 class="ui-widget-header">Monitor list</h3>
+	<div class="ui-widget-content">
+		<ol>
+			<li class="placeholder">Add your items here</li>
+		</ol>
+	</div>
+</div>
+
+</div><!-- End demo -->
 
 
 
@@ -42,8 +136,8 @@
 	$(function() {
 		$( "#dialog" ).dialog({
 			autoOpen: false,
-			show: "blind",
-			hide: "explode"
+			show: "drop",
+			hide: "drop"
 		});
 
 		$( "#opener" ).click(function() {
