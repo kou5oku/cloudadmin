@@ -17,5 +17,12 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
     end
+
+   users = User.all(limit: 6)
+    50.times do
+      name = Faker::PhoneNumber.phone_number
+      address = Faker::Internet.domain_name
+      users.each { |user| user.servers.create!(name: name, address: address) }
+    end
   end
 end

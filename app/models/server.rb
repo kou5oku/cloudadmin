@@ -3,7 +3,7 @@ class Server < ActiveRecord::Base
   belongs_to :user
 
  validates :name, presence: true, length: { maximum: 100 }
- validates :address, presence: true, length: { maximum: 16 }
+ validates :address, presence: true, length: { maximum: 50 }
   validates :user_id, presence: true
 
 default_scope order: 'servers.created_at DESC'

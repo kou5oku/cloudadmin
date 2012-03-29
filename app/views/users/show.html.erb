@@ -1,5 +1,68 @@
 <% provide(:title, @user.name) %>
+
+
+
+  <script type="text/javascript">
+    $(function() {
+        /** This code runs when everything has been loaded on the page */
+        /* Inline sparklines take their values from the contents of the tag */
+        $('.inlinesparkline').sparkline(); 
+
+        /* Sparklines can also take their values from the first argument 
+        passed to the sparkline() function */
+        var myvalues = [10,8,5,7,4,4,1];
+        $('.dynamicsparkline').sparkline(myvalues);
+
+        /* The second argument gives options such as chart type */
+        $('.dynamicbar').sparkline(myvalues, {type: 'bar', barColor: 'green'} );
+
+        /* Use 'html' instead of an array of values to pass options 
+        to a sparkline with data in the tag */
+        $('.inlinebar').sparkline('html', {type: 'bar', barColor: 'red'} );
+    });
+    </script>
+
+
+    <style>
+  .draggable { width: 120px; height: 49px; padding: 0.5em; float: left; margin: 0 0px 2px 0; margin-bottom:5px; cursor: move;  }
+  #containment-wrapper { width: 95%; height:350px; border:2px solid #ccc; padding: 10px; }
+  #containment-wrapper2 { width: 95%; height:350px; border:2px solid #ccc; padding: 10px; }
+  </style>
+
+
+  <script>
+  $(function() {
+      $( ".draggable" ).draggable({  containment: "#containment-wrapper", scroll: false, snap: true }); 
+  });
+  </script>
+
+
+<div class="row">
+<aside>
 <h1>
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h1>
+</aside>
+
+
+
+    <% if @user.servers.any? %>
+      <h3>Servers (<%= @user.servers.count %>)</h3>
+      
+     
+    <div id="containment-wrapper" class="ui-widget-header">
+
+ <%= render @servers %>
+
+
+
+
+       
+     
+   
+      
+    <% end %>
+
+  
+</div>

@@ -33,7 +33,7 @@ describe "when user_id is not present" do
   end
 
   describe "with address that is too long" do
-    before { @server.address = "a" * 17 }
+    before { @server.address = "a" * 51 }
     it { should_not be_valid }
   end
 
