@@ -44,12 +44,20 @@ describe "User pages" do
     end
   end
 
-  describe "profile page" do
+describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
+    let!(:m1) { FactoryGirl.create(:server, user: user, name: "Server01", address: "10.1.1.1") }
+    let!(:m2) { FactoryGirl.create(:server, user: user, name: "Server02", address: "10.1.1.2") }
     before { visit user_path(user) }
 
     it { should have_selector('h1',    text: user.name) }
     it { should have_selector('title', text: user.name) }
+
+     describe "servers" do
+      it { should have_content(m1.name) }
+      it { should have_content(m2.name) }
+      it { should have_content(user.servers.count) }
+    end
   end
 
   describe "signup page" do

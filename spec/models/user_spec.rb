@@ -29,6 +29,8 @@ describe User do
   it { should respond_to(:authenticate) }  
   it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:servers) }
+
 
   it { should be_valid }
   it { should_not be_admin }
@@ -130,5 +132,27 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+
+   describe "server associations" do
+
+    before { @user.save }
+    let!(:older_server) do 
+      FactoryGirl.create(:server, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_server) do
+      FactoryGirl.create(:server, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right servers in the right order" do
+      @user.servers.should == [newer_server, older_server]
+    end
+     it "should destroy associated servers" do
+      servers = @user.servers
+      @user.destroy
+      servers.each do |server|
+        Server.find_by_id(server.id).should be_nil
+      end
+end
   end
 end
