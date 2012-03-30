@@ -18,10 +18,10 @@ namespace :db do
                    password_confirmation: password)
     end
 
-   users = User.all(limit: 6)
+   users = User.all(limit: 20)
     50.times do
-      name = Faker::PhoneNumber.phone_number
-      address = Faker::Internet.domain_name
+      name = Faker::Internet.domain_name
+      address = Array.new(4){rand(256)}.join('.')
       users.each { |user| user.servers.create!(name: name, address: address) }
     end
   end

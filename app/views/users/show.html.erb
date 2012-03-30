@@ -4,13 +4,14 @@
 
   <script type="text/javascript">
     $(function() {
+       var myvalues = [10,8,5,7,4,4,1];
         /** This code runs when everything has been loaded on the page */
         /* Inline sparklines take their values from the contents of the tag */
-        $('.inlinesparkline').sparkline(); 
+        $('.inlinesparkline').sparkline('html', {type: 'pie', height: '22px'}); 
 
         /* Sparklines can also take their values from the first argument 
         passed to the sparkline() function */
-        var myvalues = [10,8,5,7,4,4,1];
+       
         $('.dynamicsparkline').sparkline(myvalues);
 
         /* The second argument gives options such as chart type */
@@ -24,9 +25,10 @@
 
 
     <style>
-  .draggable { width: 120px; height: 49px; padding: 0.5em; float: left; margin: 0 0px 2px 0; margin-bottom:5px; cursor: move;  }
+  .draggable { width: 90px; height: 51px; padding: 0.5em; float: left; margin: 0 0px 2px 0; margin-bottom:5px; cursor: move;  }
   #containment-wrapper { width: 95%; height:350px; border:2px solid #ccc; padding: 10px; }
   #containment-wrapper2 { width: 95%; height:350px; border:2px solid #ccc; padding: 10px; }
+ 
   </style>
 
 

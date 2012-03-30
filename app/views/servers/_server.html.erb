@@ -1,5 +1,5 @@
-
 <div class="draggable ui-widget-content">
-<span class="content" style="color:green;"><%= server.name %><div style="color:black"><%= server.address %><br>created <%= time_ago_in_words(server.created_at) %> ago.</div></span>
+
+<span class="button content" style="color:green;"><span class="inlinesparkline"><%= Array.new(4){rand(25)}.join(',') %></span><br><%= server.name %><div style="color:black"><%= server.address %></div></span>
 
 </div>
