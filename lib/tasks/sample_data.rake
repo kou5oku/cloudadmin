@@ -19,9 +19,11 @@ namespace :db do
     end
 
    users = User.all(limit: 20)
-    50.times do
-      name = Faker::Internet.domain_name
+    10.times do
+      name = Faker::Name.first_name
       address = Array.new(4){rand(256)}.join('.')
+      company = Faker::Company.name
+      phrase = Faker::Company.catch_phrase
       users.each { |user| user.servers.create!(name: name, address: address) }
     end
   end

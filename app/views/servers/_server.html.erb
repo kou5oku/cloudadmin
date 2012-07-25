@@ -1,5 +1,35 @@
+
+
+<script>
+$(function() {
+$( "#<%= server.name %>" ).dialog({
+      autoOpen: false,
+      show: "blind",
+      hide: "fold",
+       width: 460,
+      
+    });
+
+    $( "#open-<%= server.name %>" ).click(function() {
+      $( "#<%= server.name %>" ).dialog( "open" );
+      return false;
+    }); 
+
+
+});
+</script>
+<div id="<%= server.name %>" title="Server Details">
+  <h3><p><%= server.name %></p></h3>
+  <p><ul><li><%= server.address %></li>
+  	<li><%= server.phrase %></li>
+  	<li><%= server.company %></li></p>
+  <p>bunches of information regarding this server</p>
+</div>
+
 <div class="draggable ui-widget-content">
 
-<span class="button content" style="color:green;"><span class="inlinesparkline"><%= Array.new(4){rand(25)}.join(',') %></span><br><%= server.name %><div style="color:black"><%= server.address %></div></span>
+<span class="button content" style="color:green;"><span class="inlinesparkline-grid"><%= Array.new(4){rand(25)}.join(',') %></span><br><%= server.name %><div style="color:black"><%= server.address %></div></span>
 
+
+<button id="open-<%= server.name %>">Details</button>
 </div>

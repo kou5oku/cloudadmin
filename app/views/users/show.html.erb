@@ -7,8 +7,8 @@
        var myvalues = [10,8,5,7,4,4,1];
         /** This code runs when everything has been loaded on the page */
         /* Inline sparklines take their values from the contents of the tag */
-        $('.inlinesparkline').sparkline('html', {type: 'pie', height: '22px'}); 
-
+        $('.inlinesparkline-grid').sparkline('html', {type: 'pie', height: '24px'}); 
+        $('.inlinesparkline-summary').sparkline('html', {type: 'pie', height: '174px'}); 
         /* Sparklines can also take their values from the first argument 
         passed to the sparkline() function */
        
@@ -25,8 +25,10 @@
 
 
     <style>
-  .draggable { width: 90px; height: 51px; padding: 0.5em; float: left; margin: 0 0px 2px 0; margin-bottom:5px; cursor: move;  }
-  #containment-wrapper { width: 95%; height:350px; border:2px solid #ccc; padding: 10px; }
+  .draggable { width: 90px; height: 91px; padding: 0.5em; float: left; margin: 0 0px 0px 0; cursor: move;  }
+  #server-wrapper { background-color: #E2F7FC; float: left; width: 75%; height:450px; border:2px solid #ccc; padding: 10px; }
+  #server-grid { width: 90%; height:380px; border:2px solid #ccc; padding: 10px; }
+  #summary-wrapper  { background-color: #E2F7FC; float: left; width: 20%; height:350px; border:2px solid #ccc; padding: 10px; }
   #containment-wrapper2 { width: 95%; height:350px; border:2px solid #ccc; padding: 10px; }
  
   </style>
@@ -34,12 +36,15 @@
 
   <script>
   $(function() {
-      $( ".draggable" ).draggable({  containment: "#containment-wrapper", scroll: false, snap: true }); 
+      $( ".draggable" ).draggable({  containment: "#server-grid", scroll: false, snap: true });
+      
+   
   });
   </script>
 
 
 <div class="row">
+
 <aside>
 <h1>
   <%= gravatar_for @user %>
@@ -47,15 +52,17 @@
 </h1>
 </aside>
 
-
-
     <% if @user.servers.any? %>
-      <h3>Servers (<%= @user.servers.count %>)</h3>
-      
+    <div id="summary-wrapper">
+      <h4>Uptime Report:</h4>
+      <span class="inlinesparkline-summary"><%= Array.new(2){rand(25)}.join(',') %></span>
+    </div>
+    <div id="server-wrapper">
+       <h3>Servers (<%= @user.servers.count %>)</h3>
+    <div id="server-grid" class="ui-widget-header">
+ 
      
-    <div id="containment-wrapper" class="ui-widget-header">
-
- <%= render @servers %>
+     <%= render @servers %>
 
 
 
@@ -66,5 +73,5 @@
       
     <% end %>
 
-  
+  </div>
 </div>
