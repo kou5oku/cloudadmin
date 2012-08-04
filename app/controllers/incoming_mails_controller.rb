@@ -6,7 +6,7 @@ class IncomingMailsController < ApplicationController
     Rails.logger.info params[:envelope][:from]
     Rails.logger.info params[:envelope][:remote_ip]
     Rails.logger.info params[:plain]
-    incoming_mail = Incoming_mails.new
+    incoming_mail = IncomingMails.new
     incoming_mail.to = params[:envelope][:to]
     incoming_mail.from = params[:envelope][:from]
     incoming_mail.ip = params[:envelope][:remote_ip]
