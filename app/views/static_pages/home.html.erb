@@ -20,13 +20,96 @@
   			}]
   	});
 
+  var chart;
+    
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'container'
+            },
+            title: {
+                text: 'Combination chart'
+            },
+            xAxis: {
+                categories: ['Apples', 'Oranges', 'Pears', 'Bananas', 'Plums']
+            },
+            tooltip: {
+                formatter: function() {
+                    var s;
+                    if (this.point.name) { // the pie chart
+                        s = ''+
+                            this.point.name +': '+ this.y +' fruits';
+                    } else {
+                        s = ''+
+                            this.x  +': '+ this.y;
+                    }
+                    return s;
+                }
+            },
+            labels: {
+                items: [{
+                    html: 'Total System Overview',
+                    style: {
+                        left: '40px',
+                        top: '8px',
+                        color: 'black'
+                    }
+                }]
+            },
+            series: [{
+                type: 'column',
+                name: 'ESX',
+                data: [3, 2, 1, 3, 4]
+            }, {
+                type: 'column',
+                name: 'Windows',
+                data: [2, 3, 5, 7, 6]
+            }, {
+                type: 'column',
+                name: 'Linux',
+                data: [4, 3, 3, 9, 0]
+            }, {
+                type: 'spline',
+                name: 'Average',
+                data: [3, 2.67, 3, 6.33, 3.33]
+            }, {
+                type: 'pie',
+                name: 'Total consumption',
+                data: [{
+                    name: 'ESX',
+                    y: 13,
+                    color: '#4572A7' // Jane's color
+                }, {
+                    name: 'Windows',
+                    y: 23,
+                    color: '#AA4643' // John's color
+                }, {
+                    name: 'Linux',
+                    y: 19,
+                    color: '#89A54E' // Joe's color
+                }],
+                center: [100, 80],
+                size: 100,
+                showInLegend: false,
+                dataLabels: {
+                    enabled: false
+                }
+            }]
+        });
+ 
+
+
+
+
   });
 </script>
 <div class="center hero-unit">
 <%= link_to image_tag("logo.png", alt: "Cloudadmin"), 'http://rubyonrails.org/' %>
 <hr>
 <% if signed_in? %>
-<div id="orders_chart" style="width:560px; height:300px; margin-left:125px;"></div>
+<div id="orders_chart" style="width:560px; height:300px; margin-left:125px;"></div><br>
+
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto;"></div>
+​
 <% else %>
   <h1>Cloud Admin</h1>
 
