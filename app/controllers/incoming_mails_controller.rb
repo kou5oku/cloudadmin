@@ -2,10 +2,12 @@ class IncomingMailsController < ApplicationController
   skip_before_filter :verify_authenticity_token
   
   def create
-    Rails.logger.info params[:to]
-    Rails.logger.info params[:from]
+    Rails.logger.info params[:envelope][:to]
+    Rails.logger.info params[:envelope][:from]
+    Rails.logger.info params[:envelope][:remote_ip]
     Rails.logger.info params[:plain]
-    Rails.logger.info params[:remote_ip]
+
+
 
 
     # Do some other stuff with the mail message
