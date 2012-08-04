@@ -6,10 +6,16 @@ class IncomingMailsController < ApplicationController
     Rails.logger.info params[:envelope][:from]
     Rails.logger.info params[:envelope][:remote_ip]
     Rails.logger.info params[:plain]
-
-
-
-
+    incoming_mail = Incoming_mails.new
+    incoming_mail.to = params[:envelope][:to]
+    incoming_mail.from = params[:envelope][:from]
+    incoming_mail.ip = params[:envelope][:remote_ip]
+    incoming_mail.body = params[:plain]
+    if incoming_mail.save
+    	Rails.logger.info "saved"
+    else 
+    	Rails.logger.info "not saved"
+    end
     # Do some other stuff with the mail message
     if params[:envelope][:from] != 'expected_user@example.com'
       render :text => 'success', :status => 200
