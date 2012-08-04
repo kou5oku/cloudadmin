@@ -2,6 +2,7 @@ Cloudadmin::Application.routes.draw do
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :incoming_mails
 
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
@@ -23,7 +24,6 @@ Cloudadmin::Application.routes.draw do
 
   get "static_pages/contact"
 
-  get "incoming_mails"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
