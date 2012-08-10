@@ -1,6 +1,12 @@
 class IncomingMailsController < ApplicationController    
   skip_before_filter :verify_authenticity_token
   
+
+
+  def index
+    @incoming_mails = incoming_mail.paginate(page: params[:page])
+  end
+
   def create
     Rails.logger.info params[:envelope][:to]
     Rails.logger.info params[:envelope][:from]
