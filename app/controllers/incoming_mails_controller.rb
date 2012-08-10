@@ -4,7 +4,7 @@ class IncomingMailsController < ApplicationController
 
 
   def index
-    @incoming_mails = incoming_mail.paginate(page: params[:page])
+    @incoming_mails = Incoming_mail.all
   end
 
   def create
