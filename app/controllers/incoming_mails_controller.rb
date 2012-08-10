@@ -4,7 +4,7 @@ class IncomingMailsController < ApplicationController
 
 
   def index
-    @incoming_mails = Incoming_mail.all
+    @incoming_mails = Incoming_mails.all
   end
 
   def create
