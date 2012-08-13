@@ -1,0 +1,23 @@
+<% provide(:title, 'Create Server') %>
+<h1>Create a Server</h1>
+
+<%= form_for(@user) do |f| %>
+  <%= render 'shared/error_messages' %>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+
+   
+
+      <%= f.submit "Create my server", :class => "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<% end %>
