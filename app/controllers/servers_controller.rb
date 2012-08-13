@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class ServersController < ApplicationController
 
   def new
     @server = Server.new
